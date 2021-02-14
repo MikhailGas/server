@@ -1,0 +1,53 @@
+1. Установил MySQL Server
+
+  mysqld.service - MySQL Server
+   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)
+   Active: active (running) since Wed 2021-02-03 04:14:46 +05; 6h ago
+     Docs: man:mysqld(8)
+           http://dev.mysql.com/doc/refman/en/using-systemd.html
+  Process: 4788 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)
+ Main PID: 4823 (mysqld)
+   Status: "Server is operational"
+   CGroup: /system.slice/mysqld.service
+           └─4823 /usr/sbin/mysqld 
+
+  Создал пользователя 'test' с доступом с любого хоста.
++------------------+-----------+
+| user             | host      |
++------------------+-----------+
+| test             | %         |
+| mysql.infoschema | localhost |
+| mysql.session    | localhost |
+| mysql.sys        | localhost |
+| root             | localhost |
++------------------+-----------+
+5 rows in set (0.01 sec)
+
+2. Портировал базу данных explain_models.MySQL в DB test
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+mysql> show tables;
++-----------------+
+| Tables_in_test  |
++-----------------+
+| customers       |
+| employees       |
+| offices         |
+| orderdetails    |
+| orders          |
+| payments        |
+| productlines    |
+| products        |
+| productvariants |
++-----------------+
+
+Проделал все операции с БД из методички в Workbench.
+
+Остальные задания выполнить затрудняюсь. 
